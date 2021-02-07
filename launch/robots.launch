@@ -7,7 +7,7 @@
   <group ns="snowsquirrel">
     <param name="tf_prefix" value="robot1_tf" />
     <include file="$(find multi_robot)/launch/snowsquirrel.launch" >
-      <arg name="init_pose" value="-x 1 -y 1 -z 0" />
+      <arg name="init_pose" value="-x -7 -y 1 -z 0" />
       <arg name="robot_name"  value="Robot1" />
     </include>
   </group>

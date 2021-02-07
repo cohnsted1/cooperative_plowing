@@ -10,9 +10,19 @@
        args="-urdf -model robot -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)
         -param robot_description" /-->
 
-    <node pkg="robot_state_publisher" type="state_publisher"
-          name="robot_state_publisher" output="screen"/>
 
     <!-- The odometry estimator, throttling, fake laser etc. go here -->
     <!-- All the stuff as from usual robot launch file -->
+    <rosparam file="$(find snowsquirrel_control)/config/control.yaml" command="load" ns="/"/>
+
+    <!-- load the controllers -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+  	output="screen" ns="/" args="mobile_base_controller robot_joint_state_controller ">
+    </node>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+      respawn="false" output="screen">
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
 </launch>
