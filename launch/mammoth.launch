@@ -44,16 +44,16 @@
     <remap from="$(arg actuation_base)/control" to="/yeti/cmd_vel"/> <!-- cmd_vel topic in gazebo(?) -->
     <include file="$(find mammoth_simulation)/launch/include/waypoint_publisher_simulation.launch"/>
 
-    <!-- Start Gazebo Simulation -->
-	<!-- <param name="use_sim_time" value="true" />
-	<include file="$(find gazebo_ros)/launch/empty_world.launch">
-		<arg name="world_name" value="$(find mammoth_simulation)/worlds/single-I_nosnow.sdf"/>
-		<arg name="paused" value="false"/>
-		<arg name="use_sim_time" value="true"/>
-		<arg name="gui" value="true"/>
-		<arg name="recording" value="false"/>
-		<arg name="debug" value="false"/>
-	</include> -->
+    <include file="$(find mammoth_simulation)/launch/spawn_sdf.launch">
+        <arg name="robot_name" value="yeti_with_plow"/>
+        <arg name="x" default="-7.34"/>
+    <arg name="y" default="-0.026"/>
+      <arg name="z" default="0.395"/>
+        <arg name="roll" value="0"/>
+        <arg name="pitch" value="0"/>
+        <arg name="yaw" value="0.0"/>
+        <arg name="sdf_robot_file" value="$(find mammoth_simulation)/models/yeti_with_plow/model.sdf"/>
+    </include>
 
     <!-- Guidance -->
     <remap from="/cmd_vel" to="$(arg actuation_base)/auto_control"/>
