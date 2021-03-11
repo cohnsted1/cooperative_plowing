@@ -1,0 +1,5 @@
+<launch>
+<include file="$(find multi_robot)/launch/main.launch"/>
+<include file="$(find snowsquirrel_localization)/launch/slam.launch"/>
+<include file="$(find multi_robot)/launch/melodic_waypoints_exec.launch"/>
+</launch>

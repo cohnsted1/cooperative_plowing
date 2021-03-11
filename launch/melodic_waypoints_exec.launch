@@ -1,0 +1,4 @@
+<launch>
+    <node pkg="snowsquirrel_nav" type="exec_waypoints_melodic.py" name="exec_waypoints_melodic" output="screen">
+    </node>
+</launch>
